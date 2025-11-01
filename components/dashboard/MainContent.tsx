@@ -5,11 +5,11 @@ import { EmptyState } from "./EmptyState";
 
 export const MainContent = () => {
   return (
-    <div className="flex-1 p-8">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-2xl font-semibold text-gray-900 mb-8">Hi, Lalit</h1>
+    <div className="p-10">
+      <div className="max-w-5xl mx-auto">
+        <h1 className="text-2xl font-normal text-gray-900 mb-10">Hi, Lalit</h1>
 
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-2 gap-8 mb-8">
           {/* Equity Card */}
           <MarginCard
             title="Equity"

@@ -7,16 +7,16 @@ export const watchlistData = [
     ltp: 987.65,
     down: true,
   },
-  { symbol: "INFY", change: -11.5, changePct: -0.77, ltp: 1482.3, down: true },
+  { symbol: "INFY", change: 138.2, changePct: 9.25, ltp: 1632.0, up: true },
   {
     symbol: "TCS",
     bse: true,
-    change: 22.25,
-    changePct: 0.73,
-    ltp: 3057.8,
+    change: 24.45,
+    changePct: 0.81,
+    ltp: 3060.0,
     up: true,
   },
-  { symbol: "ONGC", change: 0.84, changePct: 0.33, ltp: 255.37, up: true },
+  { symbol: "ONGC", change: 1.37, changePct: 0.54, ltp: 255.9, up: true },
   {
     symbol: "HINDUNILVR",
     bse: true,
@@ -25,12 +25,12 @@ export const watchlistData = [
     ltp: 2466.65,
     down: true,
   },
-  { symbol: "GOLDBEES", change: 0.34, changePct: 0.34, ltp: 100.02, up: true },
+  { symbol: "GOLDBEES", change: 0.03, changePct: 0.03, ltp: 99.71, up: true },
 ];
 
 export const marketIndices = [
-  { name: "NIFTY 50", value: 25722.1, change: -155.75, changePct: -0.6 },
-  { name: "SENSEX", value: 83938.71, change: -465.75, changePct: -0.55 },
+  { name: "NIFTY 50", value: 27360.45, change: 1482.6, changePct: 5.73 },
+  { name: "SENSEX", value: 85795.16, change: 1390.7, changePct: 1.65 },
 ];
 
 export interface Stock {

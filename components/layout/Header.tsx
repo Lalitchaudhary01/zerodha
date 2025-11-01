@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bell, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { marketIndices } from "@/data/dummy-data";
 
 export const Header = () => {
   const pathname = usePathname();
@@ -20,57 +19,43 @@ export const Header = () => {
   ];
 
   return (
-    <nav className="bg-white border-b border-gray-200 px-6 py-3">
+    <nav className="bg-white border-b border-gray-200 px-6 py-3 flex-shrink-0">
       <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-8">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
-              <span className="text-white font-bold text-lg">K</span>
-            </div>
-            <span className="text-gray-600 text-sm">Kite</span>
-          </Link>
-
-          {/* Market Indices */}
-          <div className="flex items-center space-x-6 text-sm">
-            {marketIndices.map((index) => (
-              <div key={index.name} className="flex items-center space-x-2">
-                <span className="font-medium text-gray-700">{index.name}</span>
-                <span className="text-gray-900 font-semibold">
-                  {index.value.toFixed(2)}
-                </span>
-                <span className="text-red-600 flex items-center">
-                  {index.change.toFixed(2)} ({index.changePct.toFixed(2)}%)
-                </span>
-              </div>
-            ))}
+        {/* Logo */}
+        <Link href="/" className="flex items-center space-x-2">
+          <div className="w-10 h-10 flex items-center justify-center">
+            <svg viewBox="0 0 40 40" className="w-full h-full">
+              <path d="M20 5 L35 20 L20 35 L5 20 Z" fill="#FF6B35" />
+            </svg>
           </div>
-        </div>
+        </Link>
 
-        {/* Right Navigation */}
-        <div className="flex items-center space-x-6">
+        {/* Center Navigation */}
+        <div className="flex items-center space-x-8">
           {navItems.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className={`${
+              className={`text-sm ${
                 pathname === item.href
-                  ? "text-blue-600"
-                  : "text-gray-600 hover:text-gray-700"
+                  ? "text-orange-500 font-medium"
+                  : "text-gray-600 hover:text-gray-800"
               } transition-colors`}
             >
               {item.name}
             </Link>
           ))}
-          <Button variant="ghost" size="icon">
+        </div>
+
+        {/* Right Navigation */}
+        <div className="flex items-center space-x-4">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <ShoppingCart className="h-5 w-5" />
           </Button>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <Bell className="h-5 w-5" />
           </Button>
-          <div className="bg-blue-600 text-white px-3 py-1 rounded text-sm font-medium">
-            BSL440
-          </div>
+          <div className="text-gray-700 text-sm font-medium">BSL440</div>
         </div>
       </div>
     </nav>
