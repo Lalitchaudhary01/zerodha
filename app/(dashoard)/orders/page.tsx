@@ -1,12 +1,25 @@
-export default function OrdersPage() {
+"use client";
+
+import React from "react";
+import Link from "next/link";
+
+const Orders: React.FC = () => {
   return (
-    <div className="flex-1 p-8 overflow-y-auto">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-2xl font-semibold text-gray-900 mb-8">Orders</h1>
-        <div className="bg-white rounded-lg shadow p-8 text-center">
-          <p className="text-gray-600">You have no orders today</p>
-        </div>
+    <div className="flex flex-col items-center justify-center h-full bg-gray-50 text-center p-6 rounded-2xl shadow-sm">
+      <div className="max-w-md">
+        <p className="text-lg text-gray-700 mb-6">
+          You haven't placed any orders today.
+        </p>
+
+        <Link
+          href="/"
+          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-blue-700 transition-colors"
+        >
+          Get Started
+        </Link>
       </div>
     </div>
   );
-}
+};
+
+export default Orders;

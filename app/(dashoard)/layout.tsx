@@ -1,4 +1,4 @@
-import { Watchlist } from "@/components/dashboard/Watchlist";
+import { WatchList } from "@/components/dashboard/Watchlist";
 import TopBar from "@/components/layout/TopBar";
 
 export default function DashboardLayout({
@@ -11,7 +11,7 @@ export default function DashboardLayout({
       <TopBar />
 
       <div className="flex flex-1 overflow-hidden">
-        <Watchlist />
+        <WatchList />
         <main className="flex-1 overflow-y-auto bg-white">{children}</main>
       </div>
     </div>
