@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useContext } from "react";
 import { Search, MoreVertical } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,6 +10,7 @@ import { DoughnutChart } from "./DoughnutChart";
 
 export const WatchList: React.FC = () => {
   const generalCtx = useContext(GeneralContext);
+  const [activePage, setActivePage] = React.useState(1);
 
   const handleBuyNow = (uid: string) => {
     generalCtx.openBuyWindow(uid);
@@ -35,8 +35,8 @@ export const WatchList: React.FC = () => {
       {/* 🧾 Watchlist Header */}
       <div className="px-4 py-3 border-b border-gray-200 flex items-center justify-between flex-shrink-0">
         <div className="flex items-center space-x-2">
-          <span className="text-sm text-gray-700">Watchlist 1</span>
-          <span className="text-xs text-gray-400">(6 / 250)</span>
+          <span className="text-sm text-gray-700">Watchlist 2</span>
+          <span className="text-xs text-gray-400">(0 / 250)</span>
         </div>
         <button className="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center">
           + New group
@@ -49,30 +49,52 @@ export const WatchList: React.FC = () => {
       </div>
 
       {/* 📊 Doughnut Chart */}
-      <div className="p-4 border-b border-gray-200 flex items-center justify-center">
+      {/* <div className="p-4 border-b border-gray-200 flex items-center justify-center">
         <div className="w-40 h-40">
           <DoughnutChart />
         </div>
-      </div>
+      </div> */}
 
       {/* 🧠 Watchlist Items */}
       <div className="flex-1 overflow-y-auto">
-        {watchlistData.map((stock, index) => (
-          <div
-            key={index}
-            className="flex items-center justify-between px-4 py-2 hover:bg-gray-50 transition-all duration-150"
-          >
-            <WatchlistItem stock={stock} />
-            <Button
-              variant="outline"
-              size="sm"
-              className="text-xs text-orange-600 border-orange-400 hover:bg-orange-50"
-              onClick={() => handleBuyNow(stock.uid)}
+        {activePage === 1 &&
+          watchlistData.map((stock, index) => (
+            <div
+              key={index}
+              className="flex items-center justify-between px-4 py-2 hover:bg-gray-50 transition-all duration-150"
             >
-              Buy Now
+              <WatchlistItem stock={stock} />
+              <Button
+                variant="outline"
+                size="sm"
+                className="text-xs text-orange-600 border-orange-400 hover:bg-orange-50"
+                onClick={() => handleBuyNow(stock.uid)}
+              >
+                Buy Now
+              </Button>
+            </div>
+          ))}
+
+        {activePage !== 1 && (
+          <div className="flex flex-col items-center justify-center h-full py-20">
+            <div className="w-16 h-16 mb-4 text-gray-300">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              >
+                <path d="M3 7h18M3 12h18M3 17h18" strokeLinecap="round" />
+              </svg>
+            </div>
+            <p className="text-gray-500 text-sm">
+              You don't have any stocks in your watchlist.
+            </p>
+            <Button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white">
+              Add a stock
             </Button>
           </div>
-        ))}
+        )}
       </div>
 
       {/* ⏩ Pagination */}
@@ -81,8 +103,9 @@ export const WatchList: React.FC = () => {
           {[1, 2, 3, 4, 5, 6, 7].map((page) => (
             <button
               key={page}
-              className={`w-8 h-8 rounded text-sm ${
-                page === 1
+              onClick={() => setActivePage(page)}
+              className={`w-8 h-8 rounded text-sm font-medium transition-colors ${
+                page === activePage
                   ? "bg-orange-500 text-white"
                   : "text-gray-600 hover:bg-gray-100"
               }`}
@@ -91,7 +114,11 @@ export const WatchList: React.FC = () => {
             </button>
           ))}
         </div>
-        <Button variant="ghost" className="text-gray-600 hover:text-gray-800">
+        <Button
+          variant="ghost"
+          size="sm"
+          className="text-gray-600 hover:text-gray-800"
+        >
           <MoreVertical className="h-4 w-4" />
         </Button>
       </div>

@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import Link from "next/link";
 
@@ -26,33 +25,40 @@ const Menu: React.FC = () => {
   ];
 
   return (
-    <div className="flex items-center gap-10">
-      {/* Logo */}
-      <img src="/logo.png" alt="logo" className="w-12 h-12 object-contain" />
+    <div className="flex items-center justify-between px-6 py-3 shadow-sm bg-white">
+      {/* Left Section (Logo + Menu) */}
+      <div className="flex items-center gap-10">
+        {/* Logo */}
+        <img
+          src="https://kite.zerodha.com/static/images/kite-logo.svg"
+          alt="logo"
+          className="w-12 h-12 object-contain ml-2"
+        />
 
-      {/* Menu Items */}
-      <ul className="flex items-center gap-6">
-        {menus.map((menu, index) => (
-          <li key={index}>
-            <Link href={menu.href}>
-              <p
-                onClick={() => handleMenuClick(index)}
-                className={`cursor-pointer text-sm font-medium transition-all ${
-                  selectedMenu === index
-                    ? "text-blue-600 border-b-2 border-blue-600 pb-1"
-                    : "text-gray-700 hover:text-blue-500"
-                }`}
-              >
-                {menu.name}
-              </p>
-            </Link>
-          </li>
-        ))}
-      </ul>
+        {/* Menu Items */}
+        <ul className="flex items-center gap-6">
+          {menus.map((menu, index) => (
+            <li key={index}>
+              <Link href={menu.href}>
+                <p
+                  onClick={() => handleMenuClick(index)}
+                  className={`cursor-pointer text-sm font-medium transition-all ${
+                    selectedMenu === index
+                      ? "text-blue-600 border-b-2 border-blue-600 pb-1"
+                      : "text-gray-700 hover:text-blue-500"
+                  }`}
+                >
+                  {menu.name}
+                </p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {/* Profile Section */}
       <div
-        className="relative flex items-center gap-2 cursor-pointer"
+        className="relative flex items-center gap-2 cursor-pointer mr-4"
         onClick={handleProfileClick}
       >
         <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-semibold">
